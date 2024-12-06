@@ -1,0 +1,103 @@
+{% extends 'customer/custabout.html' %}
+
+{% load static %}
+
+{% block title %}Booking Summary{% endblock %}
+
+{% block about_extra %}
+<main class="booking-summary-page">
+    <div class="booking-summary-container">
+        <h1>Booking Summary</h1>
+
+        <form method="post" class="booking-summary-form">
+            {% csrf_token %}
+            
+            <!-- Cruise Details -->
+            <div class="booking-summary-section">
+                
+                <strong><h2>Cruise Details</h2></strong>
+                <br>
+                <p><strong>Cruise Name:</strong> {{ booking.cruise.name }}</p>
+                <p><strong>Start Date:</strong> {{ booking.cruise.start_date }}</p>
+                <p><strong>End Date:</strong> {{ booking.cruise.end_date }}</p>
+                <p><strong>Destination:</strong> {{ booking.cruise.destination.name }}</p>
+                <p><strong>Room Type:</strong> {{ booking.room_type }}</p>
+            </div>
+            
+            <!-- Passenger Details -->
+            <div class="booking-summary-section">
+                <strong><h2>Passenger Details</h2><strong>
+                {% for passenger in booking.passengers.all %}
+                    <p>
+                        <strong>{{ passenger.first_name }} {{ passenger.last_name }}</strong> 
+                        - Age: {{ passenger.age }} | Gender: {{ passenger.gender }}
+                    </p>
+                {% endfor %}
+            </div>
+
+            <!-- Special Requests -->
+            <div class="booking-summary-section">
+                <strong><h2>Special Requests</h2><strong>
+                <p>{{ booking.additional_instructions|default:"None" }}</p>
+            </div>
+            
+            <div class="booking-summary-section">
+                <strong><h2>Loyalty Program Details</h2></strong>
+            {% if booking.loyalty_program_member and booking.customer.loyalty_program %}
+                
+                    <p><strong>Loyalty Level:</strong> {{ booking.customer.loyalty_program.level }}</p>
+                    <p><strong>Loyalty Card Number:</strong> {{ booking.customer.loyalty_program.loyalty_card_number }}</p>
+                    <p><strong>Loyalty Points:</strong> {{ booking.customer.loyalty_program.points }}</p>
+                
+            {% else %}
+                <p class="no-loyalty">None</p>
+            {% endif %}
+        </div>
+            <!-- Selected Services -->
+            <div class="booking-summary-section">
+                <strong><h2>Selected Services</h2></strong>
+                {% if booking.onboard_services.exists %}
+                    {% for service in booking.onboard_services.all %}
+                        <p><strong>{{ service.service_name }}</strong> - ${{ service.price|floatformat:2 }}</p>
+                    {% endfor %}
+                {% else %}
+                    <p>No additional services selected.</p>
+                {% endif %}
+            </div>
+
+            <!-- Pricing Summary -->
+            <div class="booking-summary-section">
+                <strong><h2>Pricing Summary</h2></strong>
+                <p><strong>Base Cruise Price:</strong> ${{ base_price|floatformat:2 }}</p>
+                <p><strong>Room Type Price:</strong> ${{ room_price|floatformat:2 }}</p>
+                <p><strong>Onboard Services Total:</strong> ${{ services_total_price|floatformat:2 }}</p>
+                <p><strong>Travel Insurance:</strong> ${{ travel_insurance_price|floatformat:2 }}</p>
+                <p><strong>Tax (10%):</strong> ${{ tax|floatformat:2 }}</p>
+                <p><strong>Discounts (Child/Elderly):</strong> -${{ discount|floatformat:2 }}</p>
+                <p><strong>Loyalty Discount:</strong> -${{ loyalty_discount|floatformat:2 }}</p>
+                <hr>
+                <h4><strong>Total Price:</strong> ${{ booking.total_price|floatformat:2 }}</h4>
+                
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-action">
+                <button type="submit" class="booking-summary-btn-submit">
+                    Confirm Booking
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script src="{% static 'javascript/booking.js' %}"></script>
+
+<script>
+    document.querySelector('.booking-summary-form').addEventListener('submit', function (event) {
+        if (!confirm("Are you sure you want to confirm this booking?")) {
+            event.preventDefault(); // Prevent submission if the user cancels
+        }
+    });
+</script>
+
+{% endblock %}
