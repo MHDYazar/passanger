@@ -1,0 +1,129 @@
+{% extends 'customer/custabout.html' %}
+
+{% load static %}
+
+{% block title %}Other Details{% endblock %}
+
+{% block about_extra %}
+<main class="booking-details-page">
+    <div class="details-container">
+        <h1>Provide Additional Details</h1>
+        
+        <!-- Loyalty Program Membership -->
+        <form id="other-details-form">
+            <div class="form-group">
+                <label for="loyalty-program-member">
+                    <input type="checkbox" id="loyalty-program-member" name="loyalty_program_member">
+                    Are you a loyalty program member?
+                </label>
+            </div>
+            
+            <!-- Loyalty Program Details -->
+            <div id="loyalty-details" class="loyalty-details">
+                <h2 id="loyalty-header">Loyalty Program Details</h2>
+                <div class="form-group">
+                    <label for="loyalty-card-number">Loyalty Card Number</label>
+                    <input type="text" id="loyalty-card-number" name="loyalty_card_number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="loyalty-pass">Special Pass</label>
+                    <input type="text" id="loyalty-pass" name="loyalty_pass" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="loyalty-level">Loyalty Level</label>
+                    <select id="loyalty-level" name="loyalty_level" class="form-control">
+                        <option value="Gold">Gold</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Bronze">Bronze</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Room Type Selection -->
+            <div class="form-group">
+                <label for="room-type">Room Type</label>
+                <select id="room-type" name="room_type" class="form-control">
+                    <option value="Economy">Economy</option>
+                    <option value="Business">Business</option>
+                    <option value="First class">First Class</option>
+                </select>
+            </div>
+            
+            <!-- Travel Insurance -->
+            <div class="form-group">
+                <label for="travel-insurance">
+                    <input type="checkbox" id="travel-insurance" name="travel_insurance">
+                    Opt for Health Insurance
+                </label>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-group">
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method" name="payment_method" class="form-control">
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-action">
+                <button type="button" id="submit-details" class="btn-submit">Confirm Details</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script src="{% static 'javascript/booking.js' %}"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loyaltyCheckbox = document.getElementById('loyalty-program-member');
+        const loyaltyDetails = document.getElementById('loyalty-details');
+        const submitButton = document.getElementById('submit-details');
+
+        // Show loyalty details when the checkbox is checked
+        loyaltyCheckbox.addEventListener('change', function () {
+            if (loyaltyCheckbox.checked) {
+                loyaltyDetails.style.display = 'block';
+            } else {
+                loyaltyDetails.style.display = 'none';
+            }
+        });
+
+        // Submit the form
+        submitButton.addEventListener('click', function () {
+            const formData = new FormData(document.getElementById('other-details-form'));
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Send data to the backend
+            fetch("{% url 'save-other-details' booking_id=booking_id %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert(data.message);
+                    window.location.href = `/customer/booking-summary/${data.booking_id}/`;
+                } else {
+                    // Show error messages from the server
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again.");
+            });
+        });
+    });
+</script>
+{% endblock %}
