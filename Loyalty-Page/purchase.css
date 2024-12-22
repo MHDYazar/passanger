@@ -1,0 +1,255 @@
+/* Purchase Membership Section Styles */
+.purchase-main {
+  width: 100%;
+  padding: 20px;
+  background-image: url(../assets/loyalty-purchase.png);
+  background-size: cover;
+}
+.purchase-loyalty h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.purchase-loyalty p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.membership-cards {
+  display:flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.membership-card1 {
+  background-color: #CE8946;
+	background-image:
+    radial-gradient(circle at 100% 0%,hsl(43, 96%, 44%) 29.5%,hsl(47deg 92% 53% / 0%) 30%),
+    radial-gradient(circle at 100% 0%,hsla(41, 82%, 51%, 0.895) 39.5%,hsl(0deg 0% 100% / 8%) 40%),
+    radial-gradient(circle at 100% 0%,hsla(38, 91%, 45%, 0.87) 49.5%,hsla(0,0%,100%,0) 50%);
+  width: 30%;
+  height: 250px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+.membership-card1:hover{
+    transform: translateY(-10px); /* Moves the div up */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds shadow */
+
+}
+.membership-card1.selected::after {
+  content: '✔'; /* Green check mark */
+  color: green;
+  font-size: 24px;
+  top: 10px;
+  right: 10px;
+}
+
+.membership-card2 {
+  background-color:  silver;
+	background-image:
+    radial-gradient(circle at 100% 0%,hsl(47, 13%, 66%) 29.5%,hsl(47deg 92% 53% / 0%) 30%),
+    radial-gradient(circle at 100% 0%,hsla(49, 9%, 77%, 0.774) 39.5%,hsl(0deg 0% 100% / 8%) 40%),
+    radial-gradient(circle at 100% 0%,hsla(46, 21%, 80%, 0.87) 49.5%,hsla(0,0%,100%,0) 50%);
+  width: 30%;
+  height: 250px;
+  background-color: #d6cdbfdc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  margin-bottom: 1rem;
+}
+.membership-card2:hover{
+  transform: translateY(-10px); /* Moves the div up */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds shadow */
+
+}
+.membership-card2.selected::after {
+  content: '✔'; /* Green check mark */
+  color: green;
+  font-size: 24px;
+  top: 10px;
+  right: 10px;
+}
+
+
+.membership-card3 {
+  background-color:  gold;
+	background-image:
+    radial-gradient(circle at 100% 0%,hsl(47deg 64% 51%) 29.5%,hsl(47deg 92% 53% / 0%) 30%),
+    radial-gradient(circle at 100% 0%,hsla(50, 100%, 63%) 39.5%,hsl(0deg 0% 100% / 8%) 40%),
+    radial-gradient(circle at 100% 0%,hsla(56, 100%, 58%) 49.5%,hsla(0,0%,100%,0) 50%);
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  height: 250px;
+  
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  margin-bottom: 1rem;
+}
+.membership-card3:hover{
+  transform: translateY(-10px); /* Moves the div up */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds shadow */
+
+}
+.membership-card3.selected::after {
+  content: '✔'; /* Green check mark */
+  color: green;
+  font-size: 24px;
+  top: 10px;
+  right: 10px;
+}
+
+/* Style when the div is not selected */
+
+
+.membership-card1 input[type="radio"] {
+  display: none;
+}
+
+
+.membership-card2 input[type="radio"] {
+  display: none;
+}
+
+
+.membership-card3 input[type="radio"] {
+  display: none;
+}
+
+
+.card-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card-content .description {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 15px;
+  font-size: bolder;
+}
+
+.card-content .price {
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.membership-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.purchase-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.purchase-button:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Styles */
+.loyalty-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Black with transparency */
+  padding: 50px;
+}
+
+.loyalty-modal-content {
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 50%;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.loyalty-modal-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.loyalty-modal-content p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.loyalty-modal-content span {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.loyalty-modal-content .close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.loyalty-modal-content .close:hover,
+.loyalty-modal-content .close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .profile-sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .purchase-main {
+      width: 100%;
+  }
+
+  .membership-card {
+      width: 48%;
+  }
+
+  .purchase-button {
+      width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .membership-card {
+      width: 100%;
+  }
+
+  .purchase-button {
+      width: auto;
+  }
+}
