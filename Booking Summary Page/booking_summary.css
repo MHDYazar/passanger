@@ -1,0 +1,249 @@
+/* Booking Summary Page Styles */
+
+.booking-summary-page {
+    background-image: url(../../assets/booking-summary.jpg);
+    background-size: cover;
+    padding: 20px;
+    background-attachment: fixed;
+    backdrop-filter: blur(10px);
+}
+ 
+  
+.booking-summary-container {
+    margin: 0 auto;
+    backdrop-filter: blur(100px);
+    max-width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.cruise-image{
+    width:100%;
+    height:100%;
+    border-radius: 90px;
+    
+}
+#cruise1{
+    background-image:url(../../assets/cruise/caribbean.jpg);
+    background-size:cover;
+}
+#cruise2{
+    background-image:url(../../assets/cruise/alaska.jpg);
+    background-size:cover;
+}
+#cruise3{
+    background-image:url(../../assets/cruise/mediterranean.jpg);
+    background-size:cover;
+}
+#cruise4{
+    background-image:url(../../assets/cruise/hawai.jpg);
+    background-size:cover;
+}
+#cruise5{
+    background-image:url(../../assets/cruise/nile.jpg);
+    background-size:cover;
+}
+#cruise6{
+    background-image:url(../../assets/cruise/bahamas.jpg);
+    background-size:cover;
+}
+
+#cruise-details{
+     
+    width:50%;
+    display:flex;
+    gap:50px;
+    margin-left: 5px;
+    float: left;
+    min-height: 400px;
+}
+#cruise-details.details-half,#cruise-details.image-half{
+   
+    flex: 1 1 50%; /* Equal widths for both sections */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    margin: 100px 10px 10px 10px;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    backdrop-filter: blur(50px); /* Glass effect */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+.details-half{
+    width:50%;
+    background-color:#ffffff
+    border radius
+}
+.image-half{
+    width:50%;
+    background-size:cover;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */  
+    border-radius: 70px;
+    background-color: #ffffff;
+}
+#passenger-details{
+    float:left;
+    width: 45%;
+    padding-bottom: 65px;
+    margin-left: 3%;
+    min-height: 400px;
+}
+#special-request{
+    float: right;
+    margin-right:2%;
+    width: 45%;
+    padding-bottom: 130px;
+    min-height:300px;
+}
+#selected-services{
+    float: left;
+    width: 50%;
+}
+#loyalty-program-details{
+    float:right;
+    width: 50%;
+    margin-right:3%;
+    min-height:300px;
+
+}
+#price-summary{
+    float:right;
+    width:45%;
+    margin-right: 2%;
+}
+#booking-confirmation{
+    float:left;
+    width: 45%;
+    margin-left: 3%;
+    height: 200px;
+}
+#booking-confirmation p{
+    color:#28a745;
+}
+.booking-summary-page h1 {
+    font-size:4.5rem;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: emoji;
+}
+
+.booking-summary-page h3 {
+    font-size: 1.6rem;
+    color: #0073e6;
+    margin-bottom: 15px;
+}
+
+.summary-para {
+    margin-left: 30px;
+}
+
+.booking-summary-section {
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 40px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.booking-summary-section:hover{
+        transform: translateY(-10px); /* Move up */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Increase shadow */
+}
+
+
+.booking-summary-section p {
+   
+    margin: 5px 0;
+    padding-left: 20px; 
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: emoji;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 10%);
+}
+
+
+.booking-summary-section h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.booking-summary-page strong {
+    font-weight: bold;
+}
+
+.booking-summary-form {
+    margin-top: 20px;
+}
+/* Button Styling */
+.booking-summary-btn-submit {
+    background-color:#2572d6;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.booking-summary-btn-submit:hover {
+    background-color: #330ce2;
+} 
+
+/* Pricing Section Styling */
+.booking-summary-section h4 {
+    font-size: 1.5rem;
+    color: #ff0000;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.booking-summary-section h2 {
+    font-size: 2.5rem;
+    color: #cc0000;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: serif;
+}
+
+/* Special Request Section */
+.booking-summary-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+}
+
+.under-line{
+    width:100%;
+    text-align:center;
+}
+#tear-end {
+    border: none;
+    border-top: 5px dotted black;
+    color: #fff;
+    background-color: #fff;
+    height: 1px;
+    width: 100%;
+  }
+
+/* Make the page responsive */
+@media (max-width: 768px) {
+    .booking-summary-container {
+        padding: 15px;
+    }
+    .booking-summary-page h1 {
+        font-size: 2rem;
+    }
+    .booking-summary-section p {
+        font-size: 0.9rem;
+    }
+}
